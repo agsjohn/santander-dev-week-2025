@@ -24,27 +24,15 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'org.postgresql:postgresql'
 
-	//	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.jar {
 	manifest {
-		attributes["Main-Class"] = "me.dio.domain.Application"
+		attributes["Main-Class"] = "me.dio.Application"
 	}
 }
 
-//tasks.named('test') {
-//	useJUnitPlatform()
-//}
-
-tasks.withType(Test).configureEach {
-	enabled = false
-}
-
-sourceSets {
-	test {
-		java {
-			srcDirs = [] // desativa os diretórios de teste
-		}
-	}
+tasks.named('test') {
+	useJUnitPlatform()
 }
